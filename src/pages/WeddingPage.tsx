@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Languages, Car, Heart, Wine, Sparkles, CircleAlert } from 'lucide-react';
+import { Languages, Heart, Wine, Sparkles, CircleAlert } from 'lucide-react';
 import CountdownTimer from "@/components/CountdownTimer";
 import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
@@ -79,7 +79,7 @@ const WeddingPage = () => {
           </h3>
           <div className="grid gap-4 text-center font-playfair text-foreground">
             <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
-              <Car className="inline w-5 h-5 mr-2 text-primary" />
+              <Sparkles className="inline w-5 h-5 mr-2 text-primary" />
               <span className="font-semibold">{t.timeline.ceremony}</span>
             </div>
             <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
