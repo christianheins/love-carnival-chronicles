@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Languages, Heart, Wine, Sparkles, CircleAlert } from 'lucide-react';
+import { Languages, Gem, GlassWater, Music, Sparkles, CircleAlert } from 'lucide-react';
 import CountdownTimer from "@/components/CountdownTimer";
 import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
@@ -77,22 +77,18 @@ const WeddingPage = () => {
           <h3 className="text-2xl md:text-3xl font-dancing text-primary text-center mb-6">
             {t.timelineTitle}
           </h3>
-          <div className="grid gap-4 text-center font-playfair text-foreground">
-            <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
-              <Sparkles className="inline w-5 h-5 mr-2 text-primary" />
-              <span className="font-semibold">{t.timeline.ceremony}</span>
+          <div className="grid gap-4 text-center font-playfair text-black">
+            <div>
+              <Gem className="inline w-5 h-5 mr-2 text-primary" />💍 {t.timeline.ceremony}
             </div>
-            <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
-              <Heart className="inline w-5 h-5 mr-2 text-primary" />
-              <span className="font-semibold">{t.timeline.reception}</span>
+            <div>
+              <GlassWater className="inline w-5 h-5 mr-2 text-primary" />🥂 {t.timeline.reception}
             </div>
-            <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
-              <Wine className="inline w-5 h-5 mr-2 text-primary" />
-              <span className="font-semibold">{t.timeline.party}</span>
+            <div>
+              <Music className="inline w-5 h-5 mr-2 text-primary" />🎶 {t.timeline.party}
             </div>
-            <div className="bg-card border border-border rounded-xl p-4 shadow-md transition-smooth hover:shadow-lg">
-              <Sparkles className="inline w-5 h-5 mr-2 text-primary" />
-              <span className="font-semibold">{t.timeline.crazyHour}</span>
+            <div>
+              <Sparkles className="inline w-5 h-5 mr-2 text-primary" />✨ {t.timeline.crazyHour}
             </div>
           </div>
         </section>
