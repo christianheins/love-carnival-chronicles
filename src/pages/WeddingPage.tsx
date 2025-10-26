@@ -47,12 +47,6 @@ const WeddingPage = () => {
           </p>
         </section>
 
-        {/* Quote */}
-        <section className="text-center">
-          <blockquote className="text-lg md:text-xl font-playfair italic text-foreground max-w-xl mx-auto leading-relaxed">
-            "{t.quote}"
-          </blockquote>
-        </section>
 
         {/* Countdown */}
         <section className="text-center">
@@ -62,17 +56,21 @@ const WeddingPage = () => {
           <CountdownTimer isSpanish={isSpanish} />
         </section>
 
-        {/* Introduction */}
-        <section className="text-center space-y-6">
-          <p className="text-lg font-playfair text-foreground">{t.locationDescription}</p>
-          <p className="text-base font-playfair text-foreground">{t.intro}</p>
+        {/* Quote */}
+        <section className="text-center">
+          <blockquote className="text-lg md:text-xl font-playfair italic text-foreground max-w-xl mx-auto leading-relaxed">
+            "{t.quote}"
+          </blockquote>
         </section>
 
-        {/* Map */}
+        {/* Map and Location */}
         <section>
           <h3 className="text-2xl md:text-3xl font-dancing text-primary text-center mb-6">
             {t.locationTitle}
           </h3>
+          <p className="text-center text-base md:text-lg font-playfair text-foreground mb-6 max-w-2xl mx-auto">
+            {t.locationDescription}
+          </p>
           <MapSection isSpanish={isSpanish} />
         </section>
 
