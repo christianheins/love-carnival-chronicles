@@ -13,7 +13,7 @@ const WeddingPage = () => {
   return (
     <div className="min-h-screen relative bg-background text-foreground">
       {/* Background watermark */}
-      <div className="absolute inset-0 w-full h-full z-[-1] opacity-30"
+      <div className="absolute inset-0 w-full h-full z-[-1] opacity-15"
         style={{
           backgroundImage: `url(${watercolorFlower})`,
           backgroundSize: 'cover',
@@ -36,12 +36,21 @@ const WeddingPage = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto max-w-[90%] md:max-w-[700px] px-4 py-12 space-y-16">
-        {/* Main names */}
-        <section className="text-center">
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-foreground tracking-wide">
-            Katty Alzamora & Christian Heins
+      <div className="relative z-10 mx-auto max-w-[90%] md:max-w-[800px] px-4 py-12 space-y-16">
+        {/* Save the Date Hero */}
+        <section className="text-center py-12 md:py-20">
+          <h1 className="text-6xl md:text-7xl font-playfair font-bold text-foreground tracking-[0.3em] uppercase mb-4">
+            SAVE
           </h1>
+          <p className="text-3xl md:text-4xl font-dancing italic text-foreground mb-4">
+            the
+          </p>
+          <h2 className="text-6xl md:text-7xl font-playfair font-bold text-foreground tracking-[0.3em] uppercase mb-12">
+            DATE
+          </h2>
+          <p className="text-sm md:text-base font-playfair text-foreground tracking-[0.2em] uppercase">
+            Katty Alzamora & Christian Heins
+          </p>
         </section>
 
         {/* Quote */}
