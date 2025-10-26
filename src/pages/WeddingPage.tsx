@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Languages, Gem, GlassWater, Music, Sparkles, CircleAlert } from 'lucide-react';
+import { Languages, CircleAlert } from 'lucide-react';
 import CountdownTimer from "@/components/CountdownTimer";
 import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
@@ -37,17 +37,11 @@ const WeddingPage = () => {
 
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-[90%] md:max-w-[800px] px-4 py-12 space-y-16">
-        {/* Save the Date Hero */}
+        {/* Main Title Hero */}
         <section className="text-center py-12 md:py-20">
-          <h1 className="text-6xl md:text-7xl font-playfair font-bold text-foreground tracking-[0.3em] uppercase mb-4">
-            SAVE
+          <h1 className="text-5xl md:text-6xl font-dancing text-foreground mb-12">
+            {t.mainTitle}
           </h1>
-          <p className="text-3xl md:text-4xl font-dancing italic text-foreground mb-4">
-            the
-          </p>
-          <h2 className="text-6xl md:text-7xl font-playfair font-bold text-foreground tracking-[0.3em] uppercase mb-12">
-            DATE
-          </h2>
           <p className="text-sm md:text-base font-playfair text-foreground tracking-[0.2em] uppercase">
             Katty Alzamora & Christian Heins
           </p>
@@ -69,8 +63,9 @@ const WeddingPage = () => {
         </section>
 
         {/* Introduction */}
-        <section className="text-center space-y-3">
-          <p className="text-lg font-playfair text-foreground">{t.intro}</p>
+        <section className="text-center space-y-6">
+          <p className="text-lg font-playfair text-foreground">{t.locationDescription}</p>
+          <p className="text-base font-playfair text-foreground">{t.intro}</p>
         </section>
 
         {/* Map */}
@@ -86,18 +81,15 @@ const WeddingPage = () => {
           <h3 className="text-2xl md:text-3xl font-dancing text-primary text-center mb-6">
             {t.timelineTitle}
           </h3>
-          <div className="grid gap-4 text-center font-playfair text-black">
+          <div className="grid gap-4 text-center font-playfair text-foreground">
             <div>
-              <Gem className="inline w-5 h-5 mr-2 text-primary" />💍 {t.timeline.ceremony}
+              💍 {t.timeline.ceremony}
             </div>
             <div>
-              <GlassWater className="inline w-5 h-5 mr-2 text-primary" />🥂 {t.timeline.reception}
+              🥂 {t.timeline.reception}
             </div>
             <div>
-              <Music className="inline w-5 h-5 mr-2 text-primary" />🎶 {t.timeline.party}
-            </div>
-            <div>
-              <Sparkles className="inline w-5 h-5 mr-2 text-primary" />✨ {t.timeline.crazyHour}
+              🎶 {t.timeline.party}
             </div>
           </div>
         </section>
@@ -192,16 +184,17 @@ const WeddingPage = () => {
 
 const translations = {
   es: {
-    quote: "En esta vida, decidimos caminar juntos y construir un presente que le dé sentido a lo que compartimos, celebrando nuestra identidad y nuestro amor en lo cotidiano y lo extraordinario.",
+    mainTitle: "¡Vívelo con Nosotros!",
+    quote: "En esta vida, decidimos caminar juntos y construir un presente que le dé sentido a lo que compartimos, celebrando nuestra identidad y nuestro amor en lo cotidiano y lo extraordinario. A continuación encontrarás todos los detalles para acompañarnos en esta gran celebración.",
     countdownTitle: "Nuestro día especial en",
-    intro: "Celebraremos nuestro matrimonio en Casa Santacoa, calle 64 #53-94, Barrio El Prado, Barranquilla, Colombia.",
+    locationDescription: "Celebraremos nuestro matrimonio en Casa Santacoa, un espacio mágico construido en 1920 que conserva el romanticismo y la esencia barranquillera que tanto queremos compartir contigo. Será un honor recibirte en este patrimonio arquitectónico de estilo neoclásico, donde los recuerdos cobran vida.",
+    intro: "Calle 64 #53-94, Barrio El Prado, Barranquilla, Colombia.",
     locationTitle: "Ubicación",
     timelineTitle: "Lo que viviremos juntos",
     timeline: {
       ceremony: "Ceremonia | 16:00–17:45",
       reception: "Recepción y Cena | 18:00–19:30",
-      party: "Fiesta | 20:00–23:00",
-      crazyHour: "Hora Loca y Cierre | 23:30–2:00",
+      party: "Fiesta | 20:00–2:00",
     },
     dressCodeTitle: "Código de Vestimenta",
     dressCodeDesc: "Queremos que luzcas increíble. Inspírate con esta paleta y estilo.",
@@ -223,23 +216,24 @@ const translations = {
       "No se permite el ingreso de mascotas",
       "No se permite el ingreso a menores de 13 años",
     ],
-    excitement: "¡Estamos muy emocionados de compartir este momento con ustedes!",
+    excitement: "Este día es muy especial para nosotros, y nos llena de alegría poder celebrarlo contigo.",
     rsvpTitle: "¿Cambiaste de opinión?",
     rsvpNamePlaceholder: "Tu nombre",
     rsvpButton: "No podremos acompañarlos",
     date: "7 de febrero de 2026"
   },
   en: {
-    quote: "In this life, we've chosen to walk together and build a present that gives meaning to what we share — celebrating our identity and our love in the ordinary and the extraordinary.",
+    mainTitle: "¡Vívelo con Nosotros!",
+    quote: "In this life, we chose to walk together and build a present that gives meaning to what we share—celebrating our identity and our love, in the ordinary and the extraordinary. Below you'll find all the details to join us in this celebration.",
     countdownTitle: "Until our special day in",
-    intro: "We will celebrate our wedding at Casa Santacoa, calle 64 #53-94, Barrio El Prado, Barranquilla, Colombia.",
+    locationDescription: "We will celebrate our wedding at Casa Santacoa, a magical venue built in 1920 that preserves the romance and Barranquilla spirit we wish to share with you. It's a neoclassical architectural landmark where memories come alive, and we'd be honored to welcome you there.",
+    intro: "Calle 64 #53-94, Barrio El Prado, Barranquilla, Colombia.",
     locationTitle: "Location",
     timelineTitle: "What We'll Experience Together",
     timeline: {
       ceremony: "Ceremony | 16:00–17:45",
       reception: "Reception & Dinner | 18:00–19:30",
-      party: "Party | 20:00–23:00",
-      crazyHour: "Crazy Hour & Close | 23:30–2:00",
+      party: "Party | 20:00–2:00",
     },
     dressCodeTitle: "Dress Code",
     dressCodeDesc: "We want you to look amazing. Get inspired by this palette and mood.",
@@ -261,7 +255,7 @@ const translations = {
       "No pets allowed",
       "No entry for children under 13",
     ],
-    excitement: "We're so excited to share this moment with you!",
+    excitement: "This day is truly special to us, and it fills us with joy to celebrate it with you.",
     rsvpTitle: "Changed Your Mind?",
     rsvpNamePlaceholder: "Your name",
     rsvpButton: "We won't be able to attend",
