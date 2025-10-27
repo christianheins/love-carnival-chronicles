@@ -124,7 +124,7 @@ const WeddingPage = () => {
           <p className="font-playfair text-foreground">{t.giftDesc}</p>
           <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
             <a
-              href="https://www.amazon.com/wedding/share/katty-christian-2026"
+              href="https://www.amazon.de/wedding/share/kattychristian"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
