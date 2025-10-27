@@ -122,8 +122,16 @@ const WeddingPage = () => {
         <section className="text-center space-y-4">
           <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
           <p className="font-playfair text-foreground">{t.giftDesc}</p>
-          <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md">
-            <p className="font-playfair text-foreground">{t.giftPlaceholder}</p>
+          <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
+            <a
+              href="https://www.amazon.com/wedding/share/katty-christian-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
+            >
+              {t.giftLink}
+            </a>
+            <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
           </div>
         </section>
 
@@ -206,7 +214,8 @@ const translations = {
     ],
     giftTitle: "Lista de Regalos",
     giftDesc: "Si deseas hacernos un detalle especial, podrás encontrar nuestras opciones aquí:",
-    giftPlaceholder: "Pronto compartiremos nuestro enlace de Amazon 🎁",
+    giftLink: "Lista de regalos en Amazon",
+    giftPostalCode: "Código postal para el envío: 10439",
     restrictionsTitle: "Por favor ten en cuenta",
     restrictions: [
       "No hay parqueadero",
@@ -245,7 +254,8 @@ const translations = {
     ],
     giftTitle: "Gift List",
     giftDesc: "If you'd like to make us a special gift, you'll find our options here:",
-    giftPlaceholder: "We'll share our Amazon link soon 🎁",
+    giftLink: "Amazon Gift Registry",
+    giftPostalCode: "Shipping postal code: 10439",
     restrictionsTitle: "Please Note",
     restrictions: [
       "No parking available",
