@@ -3,16 +3,14 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/invitation/',
+  base: "/invitation/",  // 👈 Add this line
   server: {
     host: "::",
     port: 8081,
     allowedHosts: [
-      "www.kattychristian.online",
       "kattychristian.online",
-      "157.180.82.79"
+      "www.kattychristian.online",
     ],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
