@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => ({
       "www.kattychristian.online",
     ],
   },
+    build: {
+    outDir: "dist",
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
