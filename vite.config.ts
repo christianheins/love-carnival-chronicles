@@ -11,8 +11,8 @@ export default defineConfig(({ mode }) => ({
     port: 8081,
     allowedHosts: [
       "www.kattychristian.online",
-      'kattychristian.online',
-      "http://157.180.82.79:8080",
+      "kattychristian.online",
+      "157.180.82.79"
     ],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
