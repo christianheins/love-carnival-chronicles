@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: "/invitation/",  // 👈 Add this line
   server: {
-    host: "127.0.0.1",
+    host: "::",
     port: 8081,
     allowedHosts: [
       "kattychristian.online",
