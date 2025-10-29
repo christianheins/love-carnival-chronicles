@@ -4,8 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/invitation/",  // 👈 Add this line
-  server: {
+    server: {
     host: "::",
     port: 8081,
     allowedHosts: [
