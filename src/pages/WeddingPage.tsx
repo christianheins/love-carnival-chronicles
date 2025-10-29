@@ -6,6 +6,51 @@ import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 
+function RSVPSection({ t }) {
+  const [name, setName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    if (!name.trim()) {
+      setError(t.rsvpNameRequired || 'Please enter your name.');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+    setSuccessMessage(null);
+
+    try {
+      const response = await fetch('/api/rsvp', { // Replace with your actual API endpoint
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Something went wrong on the server.');
+      }
+
+      // Assuming your API returns a success message or just a status
+      const result = await response.json();
+      setSuccessMessage(result.message || t.rsvpSuccess || 'Thank you for your RSVP!');
+      setName(''); // Clear the input field on successful submission
+
+    } catch (err) {
+      console.error('RSVP submission error:', err);
+      setError(err.message || t.rsvpError || 'Failed to submit RSVP. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 const WeddingPage = () => {
   const [isSpanish, setIsSpanish] = useState(true);
   const t = isSpanish ? translations.es : translations.en;
@@ -158,23 +203,35 @@ const WeddingPage = () => {
         </section>
 
         {/* RSVP */}
-        <section className="text-center space-y-4">
-          <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.rsvpTitle}</h3>
-          <form className="space-y-4 max-w-sm mx-auto">
-            <input
-              type="text"
-              placeholder={t.rsvpNamePlaceholder}
-              className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
-            />
-            <Button
-              type="submit"
-              variant="elegant"
-              className="w-full text-lg py-6 font-playfair"
-            >
-              {t.rsvpButton}
-            </Button>
-          </form>
-        </section>
+            <section className="text-center space-y-4">
+            <h3 className="text-2xl md:text-3xl font-dancing text-primary">
+              {t.rsvpTitle}
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto">
+              <input
+                type="text"
+                placeholder={t.rsvpNamePlaceholder}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
+                disabled={isLoading} // Disable input while submitting
+              />
+              {error && <p className="text-red-500 text-sm font-playfair">{error}</p>}
+              {successMessage && (
+                <p className="text-green-600 text-sm font-playfair">
+                  {successMessage}
+                </p>
+              )}
+              <Button
+                type="submit" // Keep type="submit" for accessibility and form behavior
+                variant="elegant"
+                className="w-full text-lg py-6 font-playfair"
+                disabled={isLoading} // Disable button while submitting
+              >
+                {isLoading ? t.rsvpSubmitting || 'Submitting...' : t.rsvpButton}
+              </Button>
+            </form>
+          </section>
 
         {/* Footer */}
         <footer className="py-10 text-center">
