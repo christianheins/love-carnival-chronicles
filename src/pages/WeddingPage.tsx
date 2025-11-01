@@ -89,15 +89,19 @@ const WeddingPage = () => {
 
   return (
     <div className="min-h-screen relative bg-background text-foreground">
-      {/* Background watermark */}
-      <div className="absolute inset-0 w-full h-full z-[-1] opacity-15"
-        style={{
-          backgroundImage: `url(${watercolorFlower})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      ></div>
+      {/* Background */}
+      <div className="fixed inset-0 z-0 bg-background">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url(${watercolorFlower})`,
+            backgroundSize: "cover",
+            backgroundPosition: "top",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      </div>
+
 
       {/* Language toggle button */}
       <div className="fixed top-4 right-4 z-50">
@@ -223,7 +227,21 @@ const WeddingPage = () => {
             <p className="text-lg md:text-xl text-foreground font-playfair italic">{t.excitement}</p>
           </div>
         </section>
-
+        {/* Carousel */}
+        <section className="mt-12 w-full">
+          <Slider {...sliderSettings}>
+            {images.map((image, idx) => (
+              <div key={idx} className="flex justify-center">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="rounded-2xl shadow-lg max-h-[500px] object-contain mx-auto"
+                />
+              </div>
+            ))}
+          </Slider>
+        </section>
+        
         {/* RSVP */}
         <section className="text-center space-y-4">
           <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.rsvpTitle}</h3>
