@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Languages, CircleAlert, HeartHandshake, Wine, Music2, Sparkles } from 'lucide-react';
 import CountdownTimer from "@/components/CountdownTimer";
-import watercolorFlower from '@/assets/watercolor-flower-cool.png';
+import watercolorFlower from '@/assets/watercolor-flower.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
@@ -241,7 +241,7 @@ const WeddingPage = () => {
             ))}
           </Slider>
         </section>
-        
+
         {/* RSVP */}
         <section className="text-center space-y-4">
           <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.rsvpTitle}</h3>
