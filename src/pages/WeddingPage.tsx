@@ -242,24 +242,37 @@ const WeddingPage = () => {
           </Slider>
         </section>
 
-        {/* RSVP */}
+        {/* RSVP section with integrated logic */}
         <section className="text-center space-y-4">
-          <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.rsvpTitle}</h3>
-          <form className="space-y-4 max-w-sm mx-auto">
+          <h3 className="text-2xl md:text-3xl font-dancing text-primary">
+            {t.rsvpTitle}
+          </h3>
+          <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto">
             <input
               type="text"
               placeholder={t.rsvpNamePlaceholder}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
+              disabled={isLoading} // Disable input while submitting
             />
+            {error && <p className="text-red-500 text-sm font-playfair">{error}</p>}
+            {successMessage && (
+              <p className="text-green-600 text-sm font-playfair">
+                {successMessage}
+              </p>
+            )}
             <Button
               type="submit"
               variant="elegant"
               className="w-full text-lg py-6 font-playfair"
+              disabled={isLoading} // Disable button while submitting
             >
-              {t.rsvpButton}
+              {isLoading ? t.rsvpSubmitting : t.rsvpButton}
             </Button>
           </form>
         </section>
+
 
         {/* Footer */}
         <footer className="py-10 text-center">
@@ -315,6 +328,7 @@ const translations = {
     rsvpNameRequired: 'Por favor, ingresa tu nombre.', // Added for RSVP form
     rsvpSuccess: '¡Gracias por tu respuesta!', // Added for RSVP form
     rsvpError: 'Fallo al enviar la respuesta. Inténtalo de nuevo.', // Added for RSVP form    date: "7 de febrero de 2026"
+    rsvpSubmitting: 'Enviando...', // Added for RSVP form loading state
     date: '7 de febrero de 2026',
 
   },
@@ -359,6 +373,7 @@ const translations = {
     rsvpButton: "We won't be able to attend",
     rsvpNameRequired: 'Please enter your name.', // Added for RSVP form
     rsvpSuccess: 'Thank you for your response!', // Added for RSVP form
+    rsvpSubmitting: 'Submitting...', // Added for RSVP form loading state
     rsvpError: 'Failed to submit response. Please try again.', // Added for RSVP form
     date: "February 7, 2026"
   }
