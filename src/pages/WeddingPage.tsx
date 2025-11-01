@@ -6,6 +6,7 @@ import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 
+
 import IMG_0047 from "@/assets/IMG_0047.jpg";
 import IMG_9764 from "@/assets/IMG_9764.jpg";
 import IMG_0259 from "@/assets/IMG_0259.jpg";
@@ -192,17 +193,22 @@ const WeddingPage = () => {
   };
 
   return (
+
+    
+
     <div className="min-h-screen relative bg-background text-foreground">
-      {/* Background watermark */}
-      <div
-        className="absolute inset-0 w-full h-full z-[-1] opacity-15"
-        style={{
-          backgroundImage: `url(${watercolorFlower})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></div>
+      {/* Background */}
+      <div className="fixed inset-0 z-0 bg-background">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url(${watercolorFlower})`,
+            backgroundSize: "cover",
+            backgroundPosition: "top",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      </div>
 
       {/* Language toggle button */}
       <div className="fixed top-4 right-4 z-50">
