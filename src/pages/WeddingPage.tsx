@@ -6,6 +6,15 @@ import watercolorFlower from '@/assets/watercolor-flower-cool.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 
+import IMG_0047 from "@/assets/IMG_0047.jpg";
+import IMG_9764 from "@/assets/IMG_9764.jpg";
+import IMG_0259 from "@/assets/IMG_0259.jpg";
+import IMG_9274 from "@/assets/IMG_9274.jpg";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 // Define translations object before WeddingPage component
 const translations = {
   es: {
@@ -109,6 +118,29 @@ const translations = {
 };
 
 const WeddingPage = () => {
+  
+
+  const images = [
+    { src: IMG_9274, alt: "Fourth Photo" },
+    { src: IMG_0047, alt: "First Photo" },
+    { src: IMG_9764, alt: "Second Photo" },
+    { src: IMG_0259, alt: "Third Photo" },
+  ];
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    arrows: false,
+    pauseOnHover: false,
+    fade: true,
+  };
+  
+  
   const [isSpanish, setIsSpanish] = useState(true);
   const t = isSpanish ? translations.es : translations.en;
 
@@ -309,6 +341,21 @@ const WeddingPage = () => {
               {t.excitement}
             </p>
           </div>
+        </section>
+        
+        {/* Carousel */}
+        <section className="mt-12 w-full">
+          <Slider {...sliderSettings}>
+            {images.map((image, idx) => (
+              <div key={idx} className="flex justify-center">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="rounded-2xl shadow-lg max-h-[500px] object-contain mx-auto"
+                />
+              </div>
+            ))}
+          </Slider>
         </section>
 
         {/* RSVP section with integrated logic */}
