@@ -66,6 +66,11 @@ const WeddingPage = () => {
       setError(t.rsvpNameRequired);
       return;
     }
+    
+    if (!email.trim()) {
+      setError(t.rsvpNameRequired);
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
