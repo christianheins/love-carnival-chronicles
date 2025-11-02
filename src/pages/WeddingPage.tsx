@@ -59,13 +59,17 @@ const WeddingPage = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('/api/rsvp', {
+      const response = await fetch('/api/cancel', {
         // Replace with your actual API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: name }),
+        body: JSON.stringify(
+          { 
+            name: name, 
+          }
+        ),
       });
 
       if (!response.ok) {
@@ -304,12 +308,13 @@ const translations = {
     dressCodeDesc: "Queremos que luzcas increíble. Inspírate con esta paleta y estilo.",
     carnivalTitle: "Carnaval de Barranquilla",
     carnivalDates: [
+      "February 6 – Guacherna",
       "7 de febrero – Día de la Boda 💕",
-      "14 de febrero – Guacherna",
-      "15 de febrero – Batalla de Flores",
-      "16 de febrero – Desfile del Rey Momo",
-      "17 de febrero – Gran Parada",
-      "18 de febrero – Entierro de Joselito",
+      "14 de febrero – Batalla de Flores / Desfile del Rey Momo",
+      "15 de febrero – Gran Parada de Tradicion",
+      "16 de febrero – Gran Parada de Comparsas",
+      "17 de febrero – Entierro de Joselito",
+      "18 de febrero – Miercoles de ceniza",
     ],
     giftTitle: "Lista de Regalos",
     giftDesc: "Si deseas hacernos un detalle especial, podrás encontrar nuestras opciones aquí:",
@@ -350,12 +355,13 @@ const translations = {
     dressCodeDesc: "We want you to look amazing. Get inspired by this palette and mood.",
     carnivalTitle: "Barranquilla Carnival",
     carnivalDates: [
-      "February 7 – Wedding Day 💕",
-      "February 14 – Guacherna",
-      "February 15 – Batalla de Flores",
-      "February 16 – Desfile del Rey Momo",
-      "February 17 – Gran Parada",
-      "February 18 – Entierro de Joselito",
+      "February 6 – Guacherna",
+      "7 de febrero – Wedding day 💕",
+      "14 de febrero – Batalla de Flores / Desfile del Rey Momo",
+      "15 de febrero – Gran Parada de Tradicion",
+      "16 de febrero – Gran Parada de Comparsas",
+      "17 de febrero – Entierro de Joselito",
+      "18 de febrero – Miercoles de ceniza",
     ],
     giftTitle: "Gift List",
     giftDesc: "If you'd like to make us a special gift, you'll find our options here:",

@@ -13,7 +13,7 @@ const FebruaryCalendar = ({ isSpanish }: FebruaryCalendarProps) => {
     : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   // Special dates in February 2026
-  const specialDates = [7, 14, 15, 16, 17, 18];
+  const specialDates = [6, 7, 14, 15, 16, 17, 18];
   const weddingDay = 7;
 
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
