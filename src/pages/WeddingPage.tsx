@@ -81,6 +81,7 @@ const WeddingPage = () => {
         body: JSON.stringify(
           { 
             name: name, 
+            email: email,
           }
         ),
       });
