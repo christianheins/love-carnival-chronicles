@@ -7,10 +7,16 @@ import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
 
-import IMG_0047 from "@/assets/IMG_0047.jpg";
-import IMG_9764 from "@/assets/IMG_9764.jpg";
-import IMG_0259 from "@/assets/IMG_0259.jpg";
-import IMG_9274 from "@/assets/IMG_9274.jpg";
+import Foto_1 from "@/assets/Foto_1.jpeg";
+import Foto_2 from "@/assets/Foto_2.jpeg";
+import Foto_3 from "@/assets/Foto_3.jpeg";
+import Foto_4 from "@/assets/Foto_4.jpeg";
+import Foto_5 from "@/assets/Foto_5.jpeg";
+import Foto_6 from "@/assets/Foto_6.jpeg";
+import Foto_7 from "@/assets/Foto_7.jpeg";
+import Foto_8 from "@/assets/Foto_8.jpeg";
+import Foto_9 from "@/assets/Foto_9.jpeg";
+import Foto_10 from "@/assets/Foto_10.jpeg";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -20,12 +26,18 @@ const WeddingPage = () => {
   const [isSpanish, setIsSpanish] = useState(true);
   const t = isSpanish ? translations.es : translations.en;
 
-
   const images = [
-    { src: IMG_9274, alt: "Fourth Photo" },
-    { src: IMG_0047, alt: "First Photo" },
-    { src: IMG_9764, alt: "Second Photo" },
-    { src: IMG_0259, alt: "Third Photo" },
+    { src: Foto_1, alt: "First Photo" },
+    { src: Foto_2, alt: "Second Photo" },
+    { src: Foto_3, alt: "Third Photo" },
+    { src: Foto_4, alt: "Fourth Photo" },
+    { src: Foto_5, alt: "Fith Photo" },
+    { src: Foto_6, alt: "Sixth Photo" },
+    { src: Foto_7, alt: "Seventh Photo" },
+    { src: Foto_8, alt: "Eight Photo" },
+    { src: Foto_9, alt: "Nineth Photo" },
+    { src: Foto_10, alt: "Tenth Photo" },
+
   ];
 
   const sliderSettings = {
