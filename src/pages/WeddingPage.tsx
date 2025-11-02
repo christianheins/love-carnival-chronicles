@@ -53,6 +53,7 @@ const WeddingPage = () => {
     fade: true,
   };
     // State for RSVP form
+  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -272,6 +273,14 @@ const WeddingPage = () => {
               className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
               disabled={isLoading} // Disable input while submitting
             />
+            <input
+              type="email"
+              placeholder={t.rsvpEmailPlaceholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
+              disabled={isLoading} // Disable input while submitting
+            />
             {error && <p className="text-red-500 text-sm font-playfair">{error}</p>}
             {successMessage && (
               <p className="text-green-600 text-sm font-playfair">
@@ -340,6 +349,7 @@ const translations = {
     ],
     excitement: "Este día es muy especial para nosotros, y nos llena de alegría poder celebrarlo contigo.",
     rsvpTitle: "¿Cambiaste de opinión?",
+    rsvpEmailPlaceholder: "Tu email",
     rsvpNamePlaceholder: "Tu nombre",
     rsvpButton: "No podremos acompañarlos",
     rsvpNameRequired: 'Por favor, ingresa tu nombre.', // Added for RSVP form
@@ -387,6 +397,7 @@ const translations = {
     ],
     excitement: "This day is truly special to us, and it fills us with joy to celebrate it with you.",
     rsvpTitle: "Changed Your Mind?",
+    rsvpEmailPlaceholder: "Your email",
     rsvpNamePlaceholder: "Your name",
     rsvpButton: "We won't be able to attend",
     rsvpNameRequired: 'Please enter your name.', // Added for RSVP form
