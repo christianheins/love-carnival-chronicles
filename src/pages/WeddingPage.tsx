@@ -275,7 +275,7 @@ const WeddingPage = () => {
               disabled={isLoading} // Disable input while submitting
             />
             <input
-              type="email"
+              type="text"
               placeholder={t.rsvpEmailPlaceholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
