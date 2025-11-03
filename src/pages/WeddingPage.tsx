@@ -6,6 +6,7 @@ import watercolorFlower from '@/assets/watercolor-flower.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
+import AmazonListDialog from "@/components/AmazonListDialog";
 
 import Foto_1 from "@/assets/Foto_1.jpeg";
 import Foto_2 from "@/assets/Foto_2.jpeg";
@@ -229,6 +230,10 @@ const WeddingPage = () => {
             <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
           </div>
         </section>
+
+
+        {/* Add the Amazon dialog below */}
+        <AmazonListDialog />
 
         {/* Restrictions */}
         <section>
