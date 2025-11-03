@@ -68,7 +68,7 @@ const WeddingPage = () => {
     }
     
     if (!email.trim()) {
-      setError(t.rsvpNameRequired);
+      setError(t.rsvpEmailRequired);
       return;
     }
 
@@ -360,6 +360,7 @@ const translations = {
     rsvpNamePlaceholder: "Tu nombre",
     rsvpButton: "No podremos acompañarlos",
     rsvpNameRequired: 'Por favor, ingresa tu nombre.', // Added for RSVP form
+    rsvpEmailRequired: 'Por favor, ingresa tu nombre.', // Added for RSVP form
     rsvpSuccess: '¡Gracias por tu respuesta!', // Added for RSVP form
     rsvpError: 'Fallo al enviar la respuesta. Inténtalo de nuevo.', // Added for RSVP form    date: "7 de febrero de 2026"
     rsvpSubmitting: 'Enviando...', // Added for RSVP form loading state
@@ -407,6 +408,7 @@ const translations = {
     rsvpEmailPlaceholder: "Your email",
     rsvpNamePlaceholder: "Your name",
     rsvpButton: "We won't be able to attend",
+    rsvpEmailRequired: 'Please enter your email.', // Added for RSVP form
     rsvpNameRequired: 'Please enter your name.', // Added for RSVP form
     rsvpSuccess: 'Thank you for your response!', // Added for RSVP form
     rsvpSubmitting: 'Submitting...', // Added for RSVP form loading state
