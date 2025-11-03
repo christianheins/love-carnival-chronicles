@@ -222,6 +222,7 @@ const WeddingPage = () => {
           </ul>
         </section>
 
+        {/* Amazon wedding list code */}
         <section className="text-center space-y-4">
               <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
               <p className="font-playfair text-foreground">{t.giftDesc}</p>
@@ -246,7 +247,7 @@ const WeddingPage = () => {
                       </DialogTitle>
                     </DialogHeader>
 
-                    <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
+                    <div className="space-y-2 text-center text-foreground font-playfair">
                       <p className="text-justify">
                         Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
                         ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
