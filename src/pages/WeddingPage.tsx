@@ -102,6 +102,7 @@ const WeddingPage = () => {
       const result = await response.json();
       setSuccessMessage(result.message || t.rsvpSuccess);
       setName(''); // Clear the input field on successful submission
+      setEmail(''); // Clear the input field on successful submission
     } catch (err) {
       console.error('RSVP submission error:', err);
       setError(err.message || t.rsvpError);
