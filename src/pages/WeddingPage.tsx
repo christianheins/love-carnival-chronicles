@@ -6,7 +6,7 @@ import watercolorFlower from '@/assets/watercolor-flower.png';
 import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
-import AmazonListDialog from "@/components/AmazonListDialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 
 import Foto_1 from "@/assets/Foto_1.jpeg";
 import Foto_2 from "@/assets/Foto_2.jpeg";
@@ -24,6 +24,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const WeddingPage = () => {
+  const [open, setOpen] = useState(false);
+
+  const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian"; // your real Amazon list URL
+
+  const handleContinue = () => {
+    window.open(amazonUrl, "_blank");
+    setOpen(false);
+  };
   const [isSpanish, setIsSpanish] = useState(true);
   const t = isSpanish ? translations.es : translations.en;
 
@@ -214,26 +222,79 @@ const WeddingPage = () => {
           </ul>
         </section>
 
-        {/* Gift list */}
         <section className="text-center space-y-4">
-          <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
-          <p className="font-playfair text-foreground">{t.giftDesc}</p>
-          <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
-            <a
-              href="https://www.amazon.de/wedding/share/kattychristian"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
-            >
-              {t.giftLink}
-            </a>
-            <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
-          </div>
-        </section>
+              <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
+              <p className="font-playfair text-foreground">{t.giftDesc}</p>
 
+              <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
+                {/* Instead of direct link, open dialog */}
+                <button
+                  onClick={() => setOpen(true)}
+                  className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
+                >
+                  {t.giftLink}
+                </button>
 
-        {/* Add the Amazon dialog below */}
-        <AmazonListDialog />
+                <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
+
+                {/* Dialog */}
+                <Dialog open={open} onOpenChange={setOpen}>
+                  <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
+                    <DialogHeader>
+                      <DialogTitle className="text-center text-2xl font-dancing text-primary">
+                        🎁 {t.giftLink}
+                      </DialogTitle>
+                    </DialogHeader>
+
+                    <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
+                      <p className="text-justify">
+                        Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
+                        ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
+                      </p>
+                      <p className="text-justify">
+                        This list brings together things that reflect what we love and enjoy sharing. We're so
+                        grateful you took the time to check it out and pick something for us!
+                      </p>
+
+                      <p className="text-center font-medium mt-4">
+                        Christian Heins & Katty Alzamora <br />
+                        Amazon Wedding List
+                      </p>
+                      <p className="text-center">
+                        📦 <span className="font-semibold">Código postal para el envío:</span> 10439
+                      </p>
+
+                      <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
+                        <p className="text-justify">
+                          <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS TAL COMO APARECEN
+                          EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
+                        </p>
+                        <p className="text-justify mt-2">
+                          <strong>NOTE:</strong> WHEN MAKING A PURCHASE, PLEASE SELECT ONLY THE ITEMS AS THEY
+                          APPEAR ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
+                        </p>
+                      </div>
+                    </div>
+
+                    <DialogFooter className="flex justify-center gap-4 mt-6">
+                      <Button
+                        variant="outline"
+                        onClick={() => setOpen(false)}
+                        className="font-playfair text-foreground border-border"
+                      >
+                        {t.close || "Close"}
+                      </Button>
+                      <Button
+                        onClick={handleContinue}
+                        className="bg-primary hover:bg-primary/80 text-white font-playfair transition-smooth"
+                      >
+                        {t.continue || "Continue to Amazon"}
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </section>
 
         {/* Restrictions */}
         <section>
