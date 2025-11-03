@@ -77,7 +77,7 @@ const WeddingPage = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('/api/cancel', {
+      const response = await fetch('https://www.kattychristian.online/api/cancel', {
         // Replace with your actual API endpoint
         method: 'POST',
         headers: {
