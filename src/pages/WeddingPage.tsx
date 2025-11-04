@@ -404,7 +404,7 @@ const WeddingPage = () => {
         </footer>
 
         {/* Background music player with ref for control */}
-        <BackgroundMusic ref={musicRef} videoId="Z6A2KZY_2j4" />
+        <BackgroundMusic videoId="Z6A2KZY_2j4" />
 
       </div>
     </div>
