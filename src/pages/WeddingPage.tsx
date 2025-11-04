@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Languages, CircleAlert, HeartHandshake, Wine, Music2, Sparkles } from 'lucide-react';
 import CountdownTimer from "@/components/CountdownTimer";
@@ -25,6 +25,42 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const WeddingPage = () => {
+  // Use a ref to control the player instance
+  const musicRef = useRef();
+  useEffect(() => {
+    const triggerPlay = () => {
+      if (musicRef.current) {
+        musicRef.current.play();
+        // Remove all listeners after the first gesture
+        window.removeEventListener('mousedown', triggerPlay);
+        window.removeEventListener('mouseup', triggerPlay);
+        window.removeEventListener('touchstart', triggerPlay);
+        window.removeEventListener('touchend', triggerPlay);
+        window.removeEventListener('keydown', triggerPlay);
+        window.removeEventListener('scroll', triggerPlay);
+        window.removeEventListener('mousemove', triggerPlay);
+      }
+    };
+
+    window.addEventListener('mousedown', triggerPlay);
+    window.addEventListener('mouseup', triggerPlay);
+    window.addEventListener('touchstart', triggerPlay);
+    window.addEventListener('touchend', triggerPlay);
+    window.addEventListener('keydown', triggerPlay);
+    window.addEventListener('scroll', triggerPlay);
+    window.addEventListener('mousemove', triggerPlay);
+
+    return () => {
+      window.removeEventListener('mousedown', triggerPlay);
+      window.removeEventListener('mouseup', triggerPlay);
+      window.removeEventListener('touchstart', triggerPlay);
+      window.removeEventListener('touchend', triggerPlay);
+      window.removeEventListener('keydown', triggerPlay);
+      window.removeEventListener('scroll', triggerPlay);
+      window.removeEventListener('mousemove', triggerPlay);
+    };
+  }, []);
+
   const [open, setOpen] = useState(false);
 
   const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian"; // your real Amazon list URL
