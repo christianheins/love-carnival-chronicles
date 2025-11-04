@@ -247,7 +247,7 @@ const WeddingPage = () => {
                       </DialogTitle>
                     </DialogHeader>
 
-                    <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
+                    <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-dancing">
                       <p className="space-y-2 text-center text-foreground font-playfair">
                         Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
                         ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
