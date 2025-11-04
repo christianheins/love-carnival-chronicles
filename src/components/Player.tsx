@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactPlayer from "react-player/soundcloud";
+import ReactPlayer from "react-player";
 import { Volume2, VolumeX, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -20,7 +20,11 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ url }) => {
         loop
         width="0"
         height="0"
-        style={{ display: "none" }}
+        config={{
+          soundcloud: {
+            options: { auto_play: true },
+          },
+        }}
       />
 
       <div className="fixed bottom-4 right-4 z-50 flex gap-3 opacity-90 hover:opacity-100 transition-all">
