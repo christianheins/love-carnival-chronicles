@@ -377,7 +377,7 @@ const WeddingPage = () => {
         {/* Footer */}
         <footer className="py-10 text-center">
           <span className="font-playfair text-muted-foreground text-sm md:text-base">
-            Katty & Christian — {t.date}
+            Katty & Christiannnn — {t.date}
           </span>
         </footer>
 
