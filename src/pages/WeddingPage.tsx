@@ -403,9 +403,8 @@ const WeddingPage = () => {
           </span>
         </footer>
 
-        {/* Background music player with ref for control */}
-        <BackgroundMusic url="https://soundcloud.com/elvis-crespo-official/suavemente-2?si=8ccf5bf653344da297c98c7be484af77&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" />
-      </div>
+      {/* Background Music */}
+      <BackgroundMusic url="https://soundcloud.com/elvis-crespo-official/suavemente-2" />      </div>
     </div>
   );
 };
