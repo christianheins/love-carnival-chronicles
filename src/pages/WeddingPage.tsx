@@ -7,7 +7,7 @@ import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import BackgroundMusic from '@/components/Player';
+import BackgroundMusic, { BackgroundMusicHandle } from '@/components/Player';
 
 import Foto_1 from "@/assets/Foto_1.jpeg";
 import Foto_2 from "@/assets/Foto_2.jpeg";
@@ -25,7 +25,42 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const WeddingPage = () => {
-  
+  // Ref with correct interface to control BackgroundMusic imperative handle
+  const musicRef = useRef<BackgroundMusicHandle | null>(null);
+
+  useEffect(() => {
+    const triggerPlay = () => {
+      if (musicRef.current) {
+        musicRef.current.play();
+        // Remove listeners after first user gesture
+        window.removeEventListener('mousedown', triggerPlay);
+        window.removeEventListener('mouseup', triggerPlay);
+        window.removeEventListener('touchstart', triggerPlay);
+        window.removeEventListener('touchend', triggerPlay);
+        window.removeEventListener('keydown', triggerPlay);
+        window.removeEventListener('scroll', triggerPlay);
+        window.removeEventListener('mousemove', triggerPlay);
+      }
+    };
+
+    window.addEventListener('mousedown', triggerPlay);
+    window.addEventListener('mouseup', triggerPlay);
+    window.addEventListener('touchstart', triggerPlay);
+    window.addEventListener('touchend', triggerPlay);
+    window.addEventListener('keydown', triggerPlay);
+    window.addEventListener('scroll', triggerPlay);
+    window.addEventListener('mousemove', triggerPlay);
+
+    return () => {
+      window.removeEventListener('mousedown', triggerPlay);
+      window.removeEventListener('mouseup', triggerPlay);
+      window.removeEventListener('touchstart', triggerPlay);
+      window.removeEventListener('touchend', triggerPlay);
+      window.removeEventListener('keydown', triggerPlay);
+      window.removeEventListener('scroll', triggerPlay);
+      window.removeEventListener('mousemove', triggerPlay);
+    };
+  }, []);
 
   const [open, setOpen] = useState(false);
 
@@ -368,9 +403,8 @@ const WeddingPage = () => {
           </span>
         </footer>
 
-      {/* Background Music */}
-      <BackgroundMusic url="https://soundcloud.com/elvis-crespo-official/suavemente-2" />
-      
+        {/* Background music player with ref for control */}
+        <BackgroundMusic ref={musicRef} videoId="Z6A2KZY_2j4" />
       </div>
     </div>
   );
