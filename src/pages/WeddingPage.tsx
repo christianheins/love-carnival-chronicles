@@ -7,6 +7,7 @@ import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import BackgroundMusic from '@/components/Player';
 
 import Foto_1 from "@/assets/Foto_1.jpeg";
 import Foto_2 from "@/assets/Foto_2.jpeg";
@@ -379,6 +380,10 @@ const WeddingPage = () => {
             Katty & Christian — {t.date}
           </span>
         </footer>
+
+        {/* Footer */}
+        <BackgroundMusic videoId='KB4HJ3B8ueM'></BackgroundMusic>
+
       </div>
     </div>
   );
