@@ -88,38 +88,46 @@ const BackgroundMusic = forwardRef<BackgroundMusicHandle, BackgroundMusicProps>(
       playerRef.current.unMute();
       playerRef.current.playVideo();
       setIsPlaying(true);
-      setShowHint(false); // hide hint after first press
+      setShowHint(false);
     }
   };
 
   return (
     <>
-      {/* Hidden YouTube player */}
+      {/* Hidden player */}
       <div
         id="music-player"
         className="fixed -left-[9999px] -top-[9999px] w-0 h-0 overflow-hidden pointer-events-none"
       />
 
-      {/* Floating music control */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-center space-y-2">
+      {/* Floating Music Button */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-3">
         <Button
           onClick={toggleMusic}
           variant="outline"
           size="icon"
-          className={`relative bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all rounded-full shadow-lg border-primary/20 ${
-            showHint ? "animate-pulse ring-4 ring-pink-400 ring-opacity-60" : ""
-          }`}
+          className={`relative h-16 w-16 bg-background/80 backdrop-blur-md hover:bg-background/90 
+            transition-all rounded-full shadow-2xl border-pink-400/50 
+            ${showHint ? "animate-pulse ring-8 ring-pink-400/70 shadow-pink-300/50" : ""}`}
           aria-label={isPlaying ? "Pause music" : "Play music"}
         >
           {isPlaying ? (
-            <Volume2 className="w-5 h-5 text-primary" />
+            <Volume2 className="w-8 h-8 text-pink-500 drop-shadow-md" />
           ) : (
-            <VolumeX className="w-5 h-5 text-muted-foreground" />
+            <VolumeX className="w-8 h-8 text-muted-foreground drop-shadow-md" />
           )}
         </Button>
 
         {showHint && (
-          <div className="text-xs text-pink-600 font-playfair bg-white/90 px-3 py-1 rounded-lg shadow-md animate-bounce">
+          <div
+            className="text-sm text-white font-playfair px-4 py-2 rounded-xl bg-pink-500 shadow-lg 
+            animate-bounce backdrop-blur-sm border border-pink-300/70 
+            ring-4 ring-pink-400/60 shadow-pink-400/70 transition-all"
+            style={{
+              textShadow: "0 0 8px rgba(255,255,255,0.8)",
+              boxShadow: "0 0 20px rgba(255,182,193,0.8)",
+            }}
+          >
             🎶 Tap to start music
           </div>
         )}
