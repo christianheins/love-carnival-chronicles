@@ -7,7 +7,7 @@ import MapSection from '@/components/MapSection';
 import FebruaryCalendar from '@/components/FebruaryCalendar';
 import TimelineSection from '@/components/TimelineSection';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import BackgroundMusic from '@/components/Player';
+import BackgroundMusic, { BackgroundMusicHandle } from '@/components/Player';
 
 import Foto_1 from "@/assets/Foto_1.jpeg";
 import Foto_2 from "@/assets/Foto_2.jpeg";
@@ -25,13 +25,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const WeddingPage = () => {
-  // Use a ref to control the player instance
-  const musicRef = useRef();
+  // Ref with correct interface to control BackgroundMusic imperative handle
+  const musicRef = useRef<BackgroundMusicHandle | null>(null);
+
   useEffect(() => {
     const triggerPlay = () => {
       if (musicRef.current) {
         musicRef.current.play();
-        // Remove all listeners after the first gesture
+        // Remove listeners after first user gesture
         window.removeEventListener('mousedown', triggerPlay);
         window.removeEventListener('mouseup', triggerPlay);
         window.removeEventListener('touchstart', triggerPlay);
@@ -63,7 +64,7 @@ const WeddingPage = () => {
 
   const [open, setOpen] = useState(false);
 
-  const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian"; // your real Amazon list URL
+  const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian";
 
   const handleContinue = () => {
     window.open(amazonUrl, "_blank");
@@ -83,7 +84,6 @@ const WeddingPage = () => {
     { src: Foto_8, alt: "Eight Photo" },
     { src: Foto_9, alt: "Nineth Photo" },
     { src: Foto_10, alt: "Tenth Photo" },
-
   ];
 
   const sliderSettings = {
@@ -98,21 +98,21 @@ const WeddingPage = () => {
     pauseOnHover: false,
     fade: true,
   };
-    // State for RSVP form
+
+  // RSVP states
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
 
     if (!name.trim()) {
       setError(t.rsvpNameRequired);
       return;
     }
-    
     if (!email.trim()) {
       setError(t.rsvpEmailRequired);
       return;
@@ -124,32 +124,21 @@ const WeddingPage = () => {
 
     try {
       const response = await fetch('https://www.kattychristian.online/api/cancel', {
-        // Replace with your actual API endpoint
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(
-          { 
-            name: name, 
-            email: email,
-          }
-        ),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(
-          errorData.message || t.rsvpError || 'Something went wrong on the server.'
-        );
+        throw new Error(errorData.message || t.rsvpError || 'Something went wrong on the server.');
       }
 
-      // Assuming your API returns a success message or just a status
       const result = await response.json();
       setSuccessMessage(result.message || t.rsvpSuccess);
-      setName(''); // Clear the input field on successful submission
-      setEmail(''); // Clear the input field on successful submission
-    } catch (err) {
+      setName('');
+      setEmail('');
+    } catch (err: any) {
       console.error('RSVP submission error:', err);
       setError(err.message || t.rsvpError);
     } finally {
@@ -171,7 +160,6 @@ const WeddingPage = () => {
           }}
         />
       </div>
-
 
       {/* Language toggle button */}
       <div className="fixed top-4 right-4 z-50">
@@ -261,78 +249,76 @@ const WeddingPage = () => {
 
         {/* Amazon wedding list code */}
         <section className="text-center space-y-4">
-              <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
-              <p className="font-playfair text-foreground">{t.giftDesc}</p>
+          <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
+          <p className="font-playfair text-foreground">{t.giftDesc}</p>
 
-              <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
-                {/* Instead of direct link, open dialog */}
-                <button
-                  onClick={() => setOpen(true)}
-                  className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
-                >
-                  {t.giftLink}
-                </button>
+          <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
+            <button
+              onClick={() => setOpen(true)}
+              className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
+            >
+              {t.giftLink}
+            </button>
 
-                <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
+            <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
 
-                {/* Dialog */}
-                <Dialog open={open} onOpenChange={setOpen}>
-                  <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
-                    <DialogHeader>
-                      <DialogTitle className="text-center text-2xl font-dancing text-primary">
-                        🎁 {t.giftLink}
-                      </DialogTitle>
-                    </DialogHeader>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
+                <DialogHeader>
+                  <DialogTitle className="text-center text-2xl font-dancing text-primary">
+                    🎁 {t.giftLink}
+                  </DialogTitle>
+                </DialogHeader>
 
-                    <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
-                      <p className="space-y-2 text-center text-foreground font-playfair">
-                        Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
-                        ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
-                      </p>
-                      <p className="space-y-2 text-center text-foreground font-playfair">
-                        This list brings together things that reflect what we love and enjoy sharing. We're so
-                        grateful you took the time to check it out and pick something for us!
-                      </p>
+                <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
+                  <p className="space-y-2 text-center text-foreground font-playfair">
+                    Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
+                    ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
+                  </p>
+                  <p className="space-y-2 text-center text-foreground font-playfair">
+                    This list brings together things that reflect what we love and enjoy sharing. We're so
+                    grateful you took the time to check it out and pick something for us!
+                  </p>
 
-                      <p className="text-center font-medium mt-4">
-                        Christian Heins & Katty Alzamora <br />
-                        Amazon Wedding List
-                      </p>
-                      <p className="text-center">
-                        📦 <span className="font-semibold">Código postal para el envío:</span> 10439
-                      </p>
+                  <p className="text-center font-medium mt-4">
+                    Christian Heins & Katty Alzamora <br />
+                    Amazon Wedding List
+                  </p>
+                  <p className="text-center">
+                    📦 <span className="font-semibold">Código postal para el envío:</span> 10439
+                  </p>
 
-                      <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
-                        <p className="text-justify">
-                          <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS TAL COMO APARECEN
-                          EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
-                        </p>
-                        <p className="text-justify mt-2">
-                          <strong>NOTE:</strong> WHEN MAKING A PURCHASE, PLEASE SELECT ONLY THE ITEMS AS THEY
-                          APPEAR ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
-                        </p>
-                      </div>
-                    </div>
+                  <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
+                    <p className="text-justify">
+                      <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS TAL COMO APARECEN
+                      EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
+                    </p>
+                    <p className="text-justify mt-2">
+                      <strong>NOTE:</strong> WHEN MAKING A PURCHASE, PLEASE SELECT ONLY THE ITEMS AS THEY
+                      APPEAR ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
+                    </p>
+                  </div>
+                </div>
 
-                    <DialogFooter className="flex justify-center gap-4 mt-6">
-                      <Button
-                        variant="outline"
-                        onClick={() => setOpen(false)}
-                        className="font-playfair text-foreground border-border"
-                      >
-                        {t.close || "Close"}
-                      </Button>
-                      <Button
-                        onClick={handleContinue}
-                        className="bg-primary hover:bg-primary/80 text-white font-playfair transition-smooth"
-                      >
-                        {t.continue || "Continue to Amazon"}
-                      </Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </section>
+                <DialogFooter className="flex justify-center gap-4 mt-6">
+                  <Button
+                    variant="outline"
+                    onClick={() => setOpen(false)}
+                    className="font-playfair text-foreground border-border"
+                  >
+                    {t.close || "Close"}
+                  </Button>
+                  <Button
+                    onClick={handleContinue}
+                    className="bg-primary hover:bg-primary/80 text-white font-playfair transition-smooth"
+                  >
+                    {t.continue || "Continue to Amazon"}
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </section>
 
         {/* Restrictions */}
         <section>
@@ -355,6 +341,7 @@ const WeddingPage = () => {
             <p className="text-lg md:text-xl text-foreground font-playfair italic">{t.excitement}</p>
           </div>
         </section>
+
         {/* Carousel */}
         <section className="mt-12 w-full">
           <Slider {...sliderSettings}>
@@ -370,7 +357,7 @@ const WeddingPage = () => {
           </Slider>
         </section>
 
-        {/* RSVP section with integrated logic */}
+        {/* RSVP form */}
         <section className="text-center space-y-4">
           <h3 className="text-2xl md:text-3xl font-dancing text-primary">
             {t.rsvpTitle}
@@ -382,7 +369,7 @@ const WeddingPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
-              disabled={isLoading} // Disable input while submitting
+              disabled={isLoading} 
             />
             <input
               type="text"
@@ -390,7 +377,7 @@ const WeddingPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-input bg-background p-3 rounded-lg text-center font-playfair focus:outline-none focus:ring-2 focus:ring-ring transition-smooth"
-              disabled={isLoading} // Disable input while submitting
+              disabled={isLoading} 
             />
             {error && <p className="text-red-500 text-sm font-playfair">{error}</p>}
             {successMessage && (
@@ -402,13 +389,12 @@ const WeddingPage = () => {
               type="submit"
               variant="elegant"
               className="w-full text-lg py-6 font-playfair"
-              disabled={isLoading} // Disable button while submitting
+              disabled={isLoading}
             >
               {isLoading ? t.rsvpSubmitting : t.rsvpButton}
             </Button>
           </form>
         </section>
-
 
         {/* Footer */}
         <footer className="py-10 text-center">
@@ -417,9 +403,8 @@ const WeddingPage = () => {
           </span>
         </footer>
 
-        {/* Music */}
-        <BackgroundMusic videoId="Z6A2KZY_2j4" />
-      
+        {/* Background music player with ref for control */}
+        <BackgroundMusic url="https://soundcloud.com/elvis-crespo-official/suavemente-2?si=8ccf5bf653344da297c98c7be484af77&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" />
       </div>
     </div>
   );
