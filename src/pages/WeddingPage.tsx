@@ -382,7 +382,7 @@ const WeddingPage = () => {
         </footer>
 
         {/* Footer */}
-        <BackgroundMusic videoId="Z6A2KZY_2j4" />
+        <BackgroundMusic url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
       
       </div>
     </div>
