@@ -381,8 +381,8 @@ const WeddingPage = () => {
           </span>
         </footer>
 
-        {/* Footer */}
-        <BackgroundMusic videoId="Z6A2KZY_2j4" />
+        {/* Music */}
+        <BackgroundMusic videoId="KB4HJ3B8ueM" />
       
       </div>
     </div>
