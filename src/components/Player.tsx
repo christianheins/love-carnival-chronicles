@@ -18,48 +18,42 @@ const BackgroundMusic = ({ videoId }: BackgroundMusicProps) => {
   const [isReady, setIsReady] = useState(false);
   const playerRef = useRef<any>(null);
 
-  useEffect(() => {
-    // Load YouTube IFrame API
+    useEffect(() => {
     if (!window.YT) {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.body.appendChild(tag);
+    } else if (window.YT && window.YT.Player) {
+        // Already loaded
+        window.onYouTubeIframeAPIReady();
     }
 
-    // Initialize player when API is ready
     window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player('music-player', {
+        if (playerRef.current) return; // Prevent multiple players
+        playerRef.current = new window.YT.Player('music-player', {
         height: '0',
         width: '0',
         videoId: videoId,
         playerVars: {
-          autoplay: 1,
-          controls: 0,
-          mute: 0,
-          loop: 1,
-          playlist: videoId
+            autoplay: 1,
+            controls: 0,
+            mute: 0,
+            loop: 1,
+            playlist: videoId,
         },
         events: {
-          onReady: (event: any) => {
+            onReady: (event) => {
             setIsReady(true);
             event.target.playVideo();
-          }
-        }
-      });
+            },
+        },
+        });
     };
-
-    // If YT is already loaded, initialize immediately
-    if (window.YT && window.YT.Player) {
-      window.onYouTubeIframeAPIReady();
-    }
 
     return () => {
-      if (playerRef.current && playerRef.current.destroy) {
-        playerRef.current.destroy();
-      }
+        if (playerRef.current?.destroy) playerRef.current.destroy();
     };
-  }, [videoId]);
+    }, [videoId]);
 
   const toggleMusic = () => {
     if (playerRef.current && isReady) {
