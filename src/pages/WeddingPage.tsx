@@ -93,6 +93,7 @@ const WeddingPage = () => {
 
     
     };
+    handleSubmit()
 
   };
   const [isSpanish, setIsSpanish] = useState(true);
