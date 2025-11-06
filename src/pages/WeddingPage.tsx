@@ -66,6 +66,28 @@ const WeddingPage = () => {
 
   const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian";
 
+
+  // 📨 Notify backend when page is opened
+  useEffect(() => {
+    const notifyPageOpened = async () => {
+      try {
+        await fetch('https://www.kattychristian.online/api/page_opened', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            page: window.location.pathname,
+            referrer: document.referrer,
+            userAgent: navigator.userAgent,
+          }),
+        });
+      } catch (err) {
+        console.error('Page open notification failed:', err);
+      }
+    };
+
+    notifyPageOpened();
+  }, []);
+
   const handleContinue = () => {
     window.open(amazonUrl, "_blank");
     setOpen(false);
@@ -95,26 +117,6 @@ const WeddingPage = () => {
     };
     handleSubmit()
   
-    // 📨 Notify backend when page is opened
-    useEffect(() => {
-      const notifyPageOpened = async () => {
-        try {
-          await fetch('https://www.kattychristian.online/api/page_opened', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              page: window.location.pathname,
-              referrer: document.referrer,
-              userAgent: navigator.userAgent,
-            }),
-          });
-        } catch (err) {
-          console.error('Page open notification failed:', err);
-        }
-      };
-
-      notifyPageOpened();
-    }, []);
 
   };
   
