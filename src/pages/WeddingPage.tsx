@@ -69,6 +69,31 @@ const WeddingPage = () => {
   const handleContinue = () => {
     window.open(amazonUrl, "_blank");
     setOpen(false);
+
+    const handleSubmit = async () => {
+      try {
+        const response = await fetch('https://www.kattychristian.online/api/amazon_link_opened', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || t.rsvpError || 'Something went wrong on the server.');
+        }
+
+        const result = await response.json();
+        setSuccessMessage(result.message || 'Amazon link open notification sent.');
+      } catch (err: any) {
+        console.error('Amazon link open error:', err);
+        setError(err.message || 'Failed to send notification.');
+      } finally {
+        setIsLoading(false);
+      }
+
+    
+    };
+
   };
   const [isSpanish, setIsSpanish] = useState(true);
   const t = isSpanish ? translations.es : translations.en;
