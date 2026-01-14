@@ -456,17 +456,18 @@ const WeddingPage = () => {
                   {/* N26 Germany */}
                   <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
                     <p className="font-medium">🇩🇪 N26 Bank (Germany)</p>
-                    <p><strong>Account holder:</strong> Christian Heins</p>
-                    <p><strong>IBAN:</strong> DE00 0000 0000 0000 0000 00</p>
+                    <p><strong>Account holder:</strong> CHRISTIAN MAURICIO HEINS MARTINEZ</p>
+                    <p><strong>IBAN:</strong> DE84 1001 1001 2624 1161 19</p>
                     <p><strong>BIC:</strong> NTSBDEB1XXX</p>
                   </div>
 
                   {/* Optional second bank */}
                   <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
-                    <p className="font-medium">🇨🇴 Banco en Colombia</p>
-                    <p><strong>Account holder:</strong> Katty Alzamora</p>
-                    <p><strong>Account:</strong> 123456789</p>
-                    <p><strong>Type:</strong> Savings</p>
+                    <p className="font-medium">🇨🇴 Banco en Colombia - Cuenta de ahorros NU BANK Nu Financiera</p>
+                    <p><strong>A nombre de de la cuenta:</strong> Christian Mauricio Heins Martinez</p>
+                    <p><strong>Cuenta:</strong> 52094374</p>
+                    <p><strong>Llave:</strong> 52094374</p>
+                    <p><strong>Tipo:</strong> Ahorros</p>
                   </div>
                 </div>
 
