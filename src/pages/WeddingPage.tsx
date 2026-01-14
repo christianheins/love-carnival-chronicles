@@ -506,8 +506,10 @@ const WeddingPage = () => {
                       rel="noopener noreferrer"
                       className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
                     >
-                      💙 PayPal
+                      💙 TARJETA DE CREDITO / CREDIT CARD / PAYPAL
                     </a>
+      
+
 
                   </div>
                 </div>
