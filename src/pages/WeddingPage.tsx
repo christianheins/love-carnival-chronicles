@@ -500,50 +500,15 @@ const WeddingPage = () => {
                   </h4>
 
                   <div className="grid gap-3">
-                    <a
-                      href="https://payrequest.io/your-link-1"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                    >
-                      💳 PayRequest (Card / SEPA / PayPal)
-                    </a>
-
-                    <a
-                      href="https://pocketwellapp.com/your-wedding-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                    >
-                      🎁 PocketWell – Wedding Wishing Well
-                    </a>
-
-                    <a
-                      href="https://giftboxme.com/your-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                    >
-                      🎀 GiftBox – Cash Gift
-                    </a>
-
-                    <a
-                      href="https://braid.co/your-pool"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                    >
-                      👥 Braid – Group Gift Pool
-                    </a>
-
-                    <a
-                      href="https://paypal.me/yourname"
+                                        <a
+                      href="https://www.paypal.com/pool/9lMg76TORQ?sr=accr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
                     >
                       💙 PayPal
                     </a>
+
                   </div>
                 </div>
 
