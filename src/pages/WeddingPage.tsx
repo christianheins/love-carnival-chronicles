@@ -62,8 +62,9 @@ const WeddingPage = () => {
     };
   }, []);
 
-  const [open, setOpen] = useState(false);
-
+  const [openAmazon, setOpenAmazon] = useState(false);
+  const [openBank, setOpenBank] = useState(false);
+  
   const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian";
 
 
@@ -298,77 +299,250 @@ const WeddingPage = () => {
           </ul>
         </section>
 
-        {/* Amazon wedding list code */}
-        <section className="text-center space-y-4">
-          <h3 className="text-2xl md:text-3xl font-dancing text-primary">{t.giftTitle}</h3>
-          <p className="font-playfair text-foreground">{t.giftDesc}</p>
+        {/* ================= GIFT SECTION ================= */}
+        <section className="text-center space-y-6">
+          <h3 className="text-2xl md:text-3xl font-dancing text-primary">
+            {t.giftTitle}
+          </h3>
 
-          <div className="p-6 border border-border rounded-xl bg-secondary/50 max-w-sm mx-auto shadow-md space-y-3">
+          <p className="font-playfair text-foreground max-w-xl mx-auto">
+            {t.giftDesc}
+          </p>
+
+          {/* CARD */}
+          <div className="p-6 border border-border rounded-2xl bg-secondary/50 max-w-sm mx-auto shadow-lg space-y-6">
+
+            {/* ================= PRIMARY: MONETARY GIFT ================= */}
             <button
-              onClick={() => setOpen(true)}
-              className="inline-block underline text-primary hover:text-primary/80 transition-smooth font-playfair"
+              onClick={() => setOpenBank(true)}
+              className="
+                w-full
+                rounded-xl
+                bg-primary
+                text-white
+                py-4
+                text-lg
+                font-playfair
+                shadow-md
+                hover:bg-primary/90
+                transition-smooth
+              "
             >
-              {t.giftLink}
+              💌 {t.bankGiftLink || "Monetary Gift Options"}
             </button>
 
-            <p className="font-playfair text-foreground text-sm">{t.giftPostalCode}</p>
+            <p className="text-xs text-foreground/70 font-playfair">
+              Transferencia bancaria, enlaces de pago o lluvia de sobres
+            </p>
 
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
-                <DialogHeader>
-                  <DialogTitle className="text-center text-2xl font-dancing text-primary">
-                    🎁 {t.giftLink}
-                  </DialogTitle>
-                </DialogHeader>
+            {/* Divider */}
+            <div className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs text-muted-foreground font-playfair">
+                o
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
 
-                <div className="space-y-4 text-foreground text-sm md:text-base leading-relaxed font-playfair">
-                  <p className="space-y-2 text-center text-foreground font-playfair">
-                    Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos compartir.
-                    ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
-                  </p>
-                  <p className="space-y-2 text-center text-foreground font-playfair">
-                    This list brings together things that reflect what we love and enjoy sharing. We're so
-                    grateful you took the time to check it out and pick something for us!
+            {/* ================= SECONDARY: AMAZON ================= */}
+            <button
+              onClick={() => setOpenAmazon(true)}
+              className="
+                underline
+                text-primary
+                hover:text-primary/80
+                transition-smooth
+                font-playfair
+                text-sm
+              "
+            >
+              🎁 {t.giftLink}
+            </button>
+          </div>
+
+          {/* ================= AMAZON DIALOG ================= */}
+          <Dialog open={openAmazon} onOpenChange={setOpenAmazon}>
+            <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
+              <DialogHeader>
+                <DialogTitle className="text-center text-2xl font-dancing text-primary">
+                  🎁 {t.giftLink}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-4 text-foreground text-sm md:text-base font-playfair">
+                <p className="text-center">
+                  Esta lista reúne algunas cosas que reflejan lo que nos gusta y
+                  disfrutamos compartir. ¡Gracias de corazón por tomarse el tiempo
+                  de verla y elegir un regalo!
+                </p>
+
+                <p className="text-center text-foreground/80">
+                  This list brings together things that reflect what we love and
+                  enjoy sharing. Thank you for taking the time to check it out!
+                </p>
+
+                <p className="text-center font-medium mt-4">
+                  Christian Heins & Katty Alzamora
+                </p>
+
+                {/* ✅ POSTAL CODE MOVED HERE */}
+                <p className="text-center">
+                  📦 <span className="font-semibold">
+                    {t.giftPostalCode}
+                  </span>
+                </p>
+
+                <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
+                  <p className="text-justify">
+                    <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS
+                    TAL COMO APARECEN EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
                   </p>
 
-                  <p className="text-center font-medium mt-4">
-                    Christian Heins & Katty Alzamora <br />
-                    Amazon Wedding List
+                  <p className="text-justify mt-2">
+                    <strong>NOTE:</strong> PLEASE SELECT ONLY THE ITEMS AS THEY APPEAR
+                    ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
                   </p>
-                  <p className="text-center">
-                    📦 <span className="font-semibold">Código postal para el envío:</span> 10439
-                  </p>
+                </div>
+              </div>
 
-                  <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
-                    <p className="text-justify">
-                      <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS TAL COMO APARECEN
-                      EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
-                    </p>
-                    <p className="text-justify mt-2">
-                      <strong>NOTE:</strong> WHEN MAKING A PURCHASE, PLEASE SELECT ONLY THE ITEMS AS THEY
-                      APPEAR ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
-                    </p>
+              <DialogFooter className="flex justify-center gap-4 mt-6">
+                <Button
+                  variant="outline"
+                  onClick={() => setOpenAmazon(false)}
+                  className="font-playfair"
+                >
+                  {t.close || "Close"}
+                </Button>
+
+                <Button
+                  onClick={handleContinue}
+                  className="bg-primary hover:bg-primary/80 text-white font-playfair"
+                >
+                  {t.continue || "Continue to Amazon"}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+                
+          {/* ================= MONETARY GIFT DIALOG ================= */}
+          <Dialog open={openBank} onOpenChange={setOpenBank}>
+            <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
+              <DialogHeader>
+                <DialogTitle className="text-center text-2xl font-dancing text-primary">
+                  💌 {t.bankGiftLink || "Monetary Gift Options"}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-6 font-playfair text-foreground text-sm md:text-base">
+
+                {/* Intro */}
+                <p className="text-center">
+                  Si deseas apoyarnos con un regalo monetario, aquí encontrarás distintas
+                  opciones seguras y sencillas. ¡Gracias de corazón! 💕
+                </p>
+
+                <p className="text-center text-foreground/80">
+                  If you’d like to support us with a monetary gift, you can choose any of
+                  the options below. Thank you so much! 💕
+                </p>
+
+                {/* ================= BANK TRANSFERS ================= */}
+                <div className="space-y-4">
+                  <h4 className="text-center font-semibold text-primary">
+                    🏦 Transferencia Bancaria / Bank Transfer
+                  </h4>
+
+                  {/* N26 Germany */}
+                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
+                    <p className="font-medium">🇩🇪 N26 Bank (Germany)</p>
+                    <p><strong>Account holder:</strong> Christian Heins</p>
+                    <p><strong>IBAN:</strong> DE00 0000 0000 0000 0000 00</p>
+                    <p><strong>BIC:</strong> NTSBDEB1XXX</p>
+                  </div>
+
+                  {/* Optional second bank */}
+                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
+                    <p className="font-medium">🇨🇴 Banco en Colombia</p>
+                    <p><strong>Account holder:</strong> Katty Alzamora</p>
+                    <p><strong>Account:</strong> 123456789</p>
+                    <p><strong>Type:</strong> Savings</p>
                   </div>
                 </div>
 
-                <DialogFooter className="flex justify-center gap-4 mt-6">
-                  <Button
-                    variant="outline"
-                    onClick={() => setOpen(false)}
-                    className="font-playfair text-foreground border-border"
-                  >
-                    {t.close || "Close"}
-                  </Button>
-                  <Button
-                    onClick={handleContinue}
-                    className="bg-primary hover:bg-primary/80 text-white font-playfair transition-smooth"
-                  >
-                    {t.continue || "Continue to Amazon"}
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </div>
+                {/* ================= PAYMENT LINKS ================= */}
+                <div className="space-y-4">
+                  <h4 className="text-center font-semibold text-primary">
+                    🔗 Enlaces de Pago / Payment Links
+                  </h4>
+
+                  <div className="grid gap-3">
+                    <a
+                      href="https://payrequest.io/your-link-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                    >
+                      💳 PayRequest (Card / SEPA / PayPal)
+                    </a>
+
+                    <a
+                      href="https://pocketwellapp.com/your-wedding-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                    >
+                      🎁 PocketWell – Wedding Wishing Well
+                    </a>
+
+                    <a
+                      href="https://giftboxme.com/your-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                    >
+                      🎀 GiftBox – Cash Gift
+                    </a>
+
+                    <a
+                      href="https://braid.co/your-pool"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                    >
+                      👥 Braid – Group Gift Pool
+                    </a>
+
+                    <a
+                      href="https://paypal.me/yourname"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                    >
+                      💙 PayPal
+                    </a>
+                  </div>
+                </div>
+
+                {/* Note */}
+                <p className="text-xs text-center text-foreground/70 pt-2">
+                  Todas las contribuciones son opcionales y recibidas con muchísimo
+                  cariño. 💖
+                </p>
+              </div>
+
+              <DialogFooter className="flex justify-center mt-6">
+                <Button
+                  variant="outline"
+                  onClick={() => setOpenBank(false)}
+                  className="font-playfair"
+                >
+                  {t.close || "Close"}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
         </section>
 
         {/* Restrictions */}
