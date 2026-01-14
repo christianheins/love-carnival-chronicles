@@ -445,12 +445,12 @@ const WeddingPage = () => {
     rounded-2xl
     shadow-2xl
     p-6
-    max-h-[90vh]
+    max-h-[calc(100vh-2rem)]
     overflow-y-auto
     overscroll-contain
-    md:max-h-none
   "
->              <DialogHeader>
+>
+          <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-dancing text-primary">
                   💌 {t.bankGiftLink || "Monetary Gift Options"}
                 </DialogTitle>
