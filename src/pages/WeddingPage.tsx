@@ -466,8 +466,8 @@ const WeddingPage = () => {
                     <p className="font-medium">🇨🇴 Banco en Colombia - Cuenta de ahorros NU BANK Nu Financiera</p>
                     <p><strong>A nombre de de la cuenta:</strong> Christian Mauricio Heins Martinez</p>
                     <p><strong>Cuenta:</strong> 52094374</p>
-                    <p><strong>Llave:</strong> 52094374</p>
                     <p><strong>Tipo:</strong> Ahorros</p>
+                    <p><strong>Nu Placa:</strong> CHM930</p>
                   </div>
                 </div>
 
