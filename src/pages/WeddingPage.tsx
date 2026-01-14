@@ -362,8 +362,19 @@ const WeddingPage = () => {
 
           {/* ================= AMAZON DIALOG ================= */}
           <Dialog open={openAmazon} onOpenChange={setOpenAmazon}>
-            <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
-              <DialogHeader>
+<DialogContent
+  className="
+    max-w-lg
+    bg-white
+    rounded-2xl
+    shadow-2xl
+    p-6
+    max-h-[90vh]
+    overflow-y-auto
+    overscroll-contain
+    md:max-h-none
+  "
+>              <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-dancing text-primary">
                   🎁 {t.giftLink}
                 </DialogTitle>
@@ -427,8 +438,19 @@ const WeddingPage = () => {
                 
           {/* ================= MONETARY GIFT DIALOG ================= */}
           <Dialog open={openBank} onOpenChange={setOpenBank}>
-            <DialogContent className="max-w-lg bg-white rounded-2xl shadow-2xl p-6">
-              <DialogHeader>
+<DialogContent
+  className="
+    max-w-lg
+    bg-white
+    rounded-2xl
+    shadow-2xl
+    p-6
+    max-h-[90vh]
+    overflow-y-auto
+    overscroll-contain
+    md:max-h-none
+  "
+>              <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-dancing text-primary">
                   💌 {t.bankGiftLink || "Monetary Gift Options"}
                 </DialogTitle>
