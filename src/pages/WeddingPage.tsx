@@ -521,6 +521,10 @@ const WeddingPage = () => {
                     <p><strong>Cedula:</strong> 1045714238</p>
                   </div>
                 </div>
+
+ 
+
+                </div>
                   
 
                   {/* N26 Germany */}
