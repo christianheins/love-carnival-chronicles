@@ -63,6 +63,7 @@ const WeddingPage = () => {
   }, []);
 
   const [openAmazon, setOpenAmazon] = useState(false);
+  const [openBank, setOpenBank] = useState(false);
   
   const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian";
 
