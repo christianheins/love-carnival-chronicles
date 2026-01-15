@@ -521,17 +521,6 @@ const WeddingPage = () => {
                     <p><strong>Cedula:</strong> 1045714238</p>
                   </div>
                 </div>
-
- 
-                  {/* Nu Bank */}
-                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
-                    <p className="font-medium">🇨🇴 Nu Bank</p>
-                    <p><strong>A nombre de de la cuenta:</strong> Christian Mauricio Heins Martinez</p>
-                    <p><strong>Cuenta:</strong> 52094374</p>
-                    <p><strong>Tipo:</strong> Ahorros</p>
-                    <p><strong>Nu Placa:</strong> CHM930</p>
-                  </div>
-                </div>
                   
 
                   {/* N26 Germany */}
