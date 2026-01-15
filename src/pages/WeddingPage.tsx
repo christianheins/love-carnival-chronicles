@@ -512,6 +512,28 @@ const WeddingPage = () => {
                     🏦 Transferencia Bancaria / Bank Transfer
                   </h4>
 
+                 {/* Bancolombia */}
+                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
+                    <p className="font-medium">🇨🇴 Bancolombia</p>
+                    <p><strong>A nombre de la cuenta:</strong>Katty Alzmora Santander</p>
+                    <p><strong>Cuenta:</strong> 775 678 182 10</p>
+                    <p><strong>Tipo:</strong> Ahorros</p>
+                    <p><strong>Cedula:</strong> 1045714238</p>
+                  </div>
+                </div>
+
+ 
+                  {/* Nu Bank */}
+                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
+                    <p className="font-medium">🇨🇴 Nu Bank</p>
+                    <p><strong>A nombre de de la cuenta:</strong> Christian Mauricio Heins Martinez</p>
+                    <p><strong>Cuenta:</strong> 52094374</p>
+                    <p><strong>Tipo:</strong> Ahorros</p>
+                    <p><strong>Nu Placa:</strong> CHM930</p>
+                  </div>
+                </div>
+                  
+
                   {/* N26 Germany */}
                   <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
                     <p className="font-medium">🇩🇪 N26 Bank (Germany)</p>
@@ -519,16 +541,6 @@ const WeddingPage = () => {
                     <p><strong>IBAN:</strong> DE84 1001 1001 2624 1161 19</p>
                     <p><strong>BIC:</strong> NTSBDEB1XXX</p>
                   </div>
-
-                  {/* Optional second bank */}
-                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
-                    <p className="font-medium">🇨🇴 Banco en Colombia - Cuenta de ahorros NU BANK Nu Financiera</p>
-                    <p><strong>A nombre de de la cuenta:</strong> Christian Mauricio Heins Martinez</p>
-                    <p><strong>Cuenta:</strong> 52094374</p>
-                    <p><strong>Tipo:</strong> Ahorros</p>
-                    <p><strong>Nu Placa:</strong> CHM930</p>
-                  </div>
-                </div>
 
                 {/* ================= PAYMENT LINKS ================= */}
                 <div className="space-y-4">
@@ -547,9 +559,7 @@ const WeddingPage = () => {
                   >
                     💙 TARJETA DE CREDITO / CREDIT CARD / PAYPAL
                   </a>
-                        
-                  </div>
-                
+                                        
                 </div>
 
                 {/* Note */}
