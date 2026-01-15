@@ -63,7 +63,6 @@ const WeddingPage = () => {
   }, []);
 
   const [openAmazon, setOpenAmazon] = useState(false);
-  const [openBank, setOpenBank] = useState(false);
   
   const amazonUrl = "https://www.amazon.de/wedding/share/kattychristian";
 
@@ -335,40 +334,69 @@ const WeddingPage = () => {
           </ul>
         </section>
 
-        {/* ================= GIFT SECTION ================= */}
+       {/* ================= GIFT SECTION ================= */}
         <section className="text-center space-y-6">
           <h3 className="text-2xl md:text-3xl font-dancing text-primary">
-            {t.giftTitle}
+            🎁 Lluvia de sobres / Monetary Gift Option
           </h3>
 
           <p className="font-playfair text-foreground max-w-xl mx-auto">
-            {t.giftDesc}
+            Si deseas apoyarnos con un regalo monetario, aquí encontrarás distintas opciones
+            seguras y sencillas. ¡Gracias de corazón! 💕
+            <br />
+            <span className="text-foreground/80">
+              If you’d like to support us with a monetary gift, you can choose any of the options
+              below. Thank you so much! 💕
+            </span>
           </p>
 
           {/* CARD */}
-          <div className="p-6 border border-border rounded-2xl bg-secondary/50 max-w-sm mx-auto shadow-lg space-y-6">
+          <div className="p-6 border border-border rounded-2xl bg-secondary/50 max-w-md mx-auto shadow-lg space-y-8 font-playfair text-foreground text-sm md:text-base">
 
-            {/* ================= PRIMARY: MONETARY GIFT ================= */}
-            <button
-              onClick={() => setOpenBank(true)}
-              className="
-                w-full
-                rounded-xl
-                bg-primary
-                text-white
-                py-4
-                text-lg
-                font-playfair
-                shadow-md
-                hover:bg-primary/90
-                transition-smooth
-              "
-            >
-              💌 {t.bankGiftLink || "Monetary Gift Options"}
-            </button>
+            {/* ================= BANK TRANSFERS ================= */}
+            <div className="space-y-4">
+              <h4 className="text-center font-semibold text-primary">
+                🏦 Transferencia Bancaria / Bank Transfer
+              </h4>
 
-            <p className="text-xs text-foreground/70 font-playfair">
-              Transferencia bancaria, enlaces de pago o lluvia de sobres
+              {/* Bancolombia */}
+              <div className="border rounded-xl p-4 bg-background/60 space-y-1">
+                <p className="font-medium">🇨🇴 Bancolombia</p>
+                <p><strong>A nombre de la cuenta:</strong> Katty Alzamora Santander</p>
+                <p><strong>Cuenta:</strong> 775 678 182 10</p>
+                <p><strong>Tipo:</strong> Ahorros</p>
+                <p><strong>Cédula:</strong> 1045714238</p>
+              </div>
+
+              {/* N26 Germany */}
+              <div className="border rounded-xl p-4 bg-background/60 space-y-1">
+                <p className="font-medium">🇩🇪 N26 Bank (Germany)</p>
+                <p><strong>Account holder:</strong> CHRISTIAN MAURICIO HEINS MARTINEZ</p>
+                <p><strong>IBAN:</strong> DE84 1001 1001 2624 1161 19</p>
+                <p><strong>BIC:</strong> NTSBDEB1XXX</p>
+              </div>
+            </div>
+
+            {/* ================= PAYMENT LINKS ================= */}
+            <div className="space-y-4">
+              <h4 className="text-center font-semibold text-primary">
+                🔗 Enlaces de Pago / Payment Links
+              </h4>
+
+              <a
+                href="https://www.paypal.com/pool/9lMg76TORQ?sr=accr"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handlePayPalClick}
+                className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+              >
+                💙 TARJETA DE CRÉDITO / CREDIT CARD / PAYPAL
+              </a>
+            </div>
+
+            {/* Note */}
+            <p className="text-xs text-center text-foreground/70">
+              Todas las contribuciones son opcionales y recibidas con muchísimo cariño. 💖
             </p>
 
             {/* Divider */}
@@ -380,7 +408,7 @@ const WeddingPage = () => {
               <div className="h-px flex-1 bg-border" />
             </div>
 
-            {/* ================= SECONDARY: AMAZON ================= */}
+            {/* ================= AMAZON ================= */}
             <button
               onClick={() => setOpenAmazon(true)}
               className="
@@ -390,6 +418,7 @@ const WeddingPage = () => {
                 transition-smooth
                 font-playfair
                 text-sm
+                text-center
               "
             >
               🎁 {t.giftLink}
@@ -398,20 +427,20 @@ const WeddingPage = () => {
 
           {/* ================= AMAZON DIALOG ================= */}
           <Dialog open={openAmazon} onOpenChange={setOpenAmazon}>
-          <DialogContent
-            className="
-              max-w-lg
-              bg-white
-              rounded-2xl
-              shadow-2xl
-              p-6
-              max-h-[90vh]
-              overflow-y-auto
-              overscroll-contain
-              md:max-h-none
-            "
-          >              
-                <DialogHeader>
+            <DialogContent
+              className="
+                max-w-lg
+                bg-white
+                rounded-2xl
+                shadow-2xl
+                p-6
+                max-h-[90vh]
+                overflow-y-auto
+                overscroll-contain
+                md:max-h-none
+              "
+            >
+              <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-dancing text-primary">
                   🎁 {t.giftLink}
                 </DialogTitle>
@@ -419,36 +448,32 @@ const WeddingPage = () => {
 
               <div className="space-y-4 text-foreground text-sm md:text-base font-playfair">
                 <p className="text-center">
-                  Esta lista reúne algunas cosas que reflejan lo que nos gusta y
-                  disfrutamos compartir. ¡Gracias de corazón por tomarse el tiempo
-                  de verla y elegir un regalo!
+                  Esta lista reúne algunas cosas que reflejan lo que nos gusta y disfrutamos
+                  compartir. ¡Gracias de corazón por tomarse el tiempo de verla y elegir un regalo!
                 </p>
 
                 <p className="text-center text-foreground/80">
-                  This list brings together things that reflect what we love and
-                  enjoy sharing. Thank you for taking the time to check it out!
+                  This list brings together things that reflect what we love and enjoy sharing.
+                  Thank you for taking the time to check it out!
                 </p>
 
                 <p className="text-center font-medium mt-4">
                   Christian Heins & Katty Alzamora
                 </p>
 
-                {/* ✅ POSTAL CODE MOVED HERE */}
                 <p className="text-center">
-                  📦 <span className="font-semibold">
-                    {t.giftPostalCode}
-                  </span>
+                  📦 <span className="font-semibold">{t.giftPostalCode}</span>
                 </p>
 
                 <div className="border-t pt-3 mt-3 text-xs md:text-sm text-foreground/80">
                   <p className="text-justify">
-                    <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS
-                    TAL COMO APARECEN EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
+                    <strong>NOTA:</strong> AL COMPRAR, SELECCIONEN SOLO LOS PRODUCTOS TAL COMO
+                    APARECEN EN LA LISTA, AUNQUE AMAZON OFREZCA OTRAS OPCIONES.
                   </p>
 
                   <p className="text-justify mt-2">
-                    <strong>NOTE:</strong> PLEASE SELECT ONLY THE ITEMS AS THEY APPEAR
-                    ON THE LIST, EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
+                    <strong>NOTE:</strong> PLEASE SELECT ONLY THE ITEMS AS THEY APPEAR ON THE LIST,
+                    EVEN IF AMAZON SHOWS OTHER BUYING OPTIONS.
                   </p>
                 </div>
               </div>
@@ -471,111 +496,7 @@ const WeddingPage = () => {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-
-                
-          {/* ================= MONETARY GIFT DIALOG ================= */}
-          <Dialog open={openBank} onOpenChange={setOpenBank}>
-<DialogContent
-  className="
-    max-w-lg
-    bg-white
-    rounded-2xl
-    shadow-2xl
-    p-6
-    max-h-[calc(100vh-2rem)]
-    overflow-y-auto
-    overscroll-contain
-  "
->
-          <DialogHeader>
-                <DialogTitle className="text-center text-2xl font-dancing text-primary">
-                  💌 {t.bankGiftLink || "Monetary Gift Options"}
-                </DialogTitle>
-              </DialogHeader>
-
-              <div className="space-y-6 font-playfair text-foreground text-sm md:text-base">
-
-                {/* Intro */}
-                <p className="text-center">
-                  Si deseas apoyarnos con un regalo monetario, aquí encontrarás distintas
-                  opciones seguras y sencillas. ¡Gracias de corazón! 💕
-                </p>
-
-                <p className="text-center text-foreground/80">
-                  If you’d like to support us with a monetary gift, you can choose any of
-                  the options below. Thank you so much! 💕
-                </p>
-
-                {/* ================= BANK TRANSFERS ================= */}
-                <div className="space-y-4">
-                  <h4 className="text-center font-semibold text-primary">
-                    🏦 Transferencia Bancaria / Bank Transfer
-                  </h4>
-
-                 {/* Bancolombia */}
-                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
-                    <p className="font-medium">🇨🇴 Bancolombia</p>
-                    <p><strong>A nombre de la cuenta:</strong>Katty Alzmora Santander</p>
-                    <p><strong>Cuenta:</strong> 775 678 182 10</p>
-                    <p><strong>Tipo:</strong> Ahorros</p>
-                    <p><strong>Cedula:</strong> 1045714238</p>
-                  </div>
-                </div>
-
- 
-
-                </div>
-                  
-
-                  {/* N26 Germany */}
-                  <div className="border rounded-xl p-4 bg-secondary/50 space-y-1">
-                    <p className="font-medium">🇩🇪 N26 Bank (Germany)</p>
-                    <p><strong>Account holder:</strong> CHRISTIAN MAURICIO HEINS MARTINEZ</p>
-                    <p><strong>IBAN:</strong> DE84 1001 1001 2624 1161 19</p>
-                    <p><strong>BIC:</strong> NTSBDEB1XXX</p>
-                  </div>
-
-                {/* ================= PAYMENT LINKS ================= */}
-                <div className="space-y-4">
-                  <h4 className="text-center font-semibold text-primary">
-                    🔗 Enlaces de Pago / Payment Links
-                  </h4>
-
-                  <div className="grid gap-3">
-
-                  <a
-                    href="https://www.paypal.com/pool/9lMg76TORQ?sr=accr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handlePayPalClick}
-                    className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                  >
-                    💙 TARJETA DE CREDITO / CREDIT CARD / PAYPAL
-                  </a>
-                                        
-                </div>
-
-                {/* Note */}
-                <p className="text-xs text-center text-foreground/70 pt-2">
-                  Todas las contribuciones son opcionales y recibidas con muchísimo
-                  cariño. 💖
-                </p>
-              </div>
-
-              <DialogFooter className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  onClick={() => setOpenBank(false)}
-                  className="font-playfair"
-                >
-                  {t.close || "Close"}
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-
         </section>
-
         {/* Restrictions */}
         <section>
           <h3 className="text-2xl md:text-3xl font-dancing text-primary text-center mb-6">
