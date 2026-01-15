@@ -89,6 +89,42 @@ const WeddingPage = () => {
     notifyPageOpened();
   }, []);
 
+  useEffect(() => {
+    if (!openBank) return;
+
+    const notifyMonetaryDialogOpened = async () => {
+      try {
+        await fetch('https://www.kattychristian.online/api/monetary_dialog_opened', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            page: window.location.pathname,
+            userAgent: navigator.userAgent,
+          }),
+        });
+      } catch (err) {
+        console.error('Monetary dialog open notification failed:', err);
+      }
+    };
+
+    notifyMonetaryDialogOpened();
+  }, [openBank]);
+
+  const handlePayPalClick = async () => {
+    try {
+      await fetch('https://www.kattychristian.online/api/paypal_link_opened', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page: window.location.pathname,
+          userAgent: navigator.userAgent,
+        }),
+      });
+    } catch (err) {
+      console.error('PayPal click notification failed:', err);
+    }
+  };
+
   const handleContinue = () => {
     window.open(amazonUrl, "_blank");
     setOpen(false);
@@ -362,19 +398,20 @@ const WeddingPage = () => {
 
           {/* ================= AMAZON DIALOG ================= */}
           <Dialog open={openAmazon} onOpenChange={setOpenAmazon}>
-<DialogContent
-  className="
-    max-w-lg
-    bg-white
-    rounded-2xl
-    shadow-2xl
-    p-6
-    max-h-[90vh]
-    overflow-y-auto
-    overscroll-contain
-    md:max-h-none
-  "
->              <DialogHeader>
+          <DialogContent
+            className="
+              max-w-lg
+              bg-white
+              rounded-2xl
+              shadow-2xl
+              p-6
+              max-h-[90vh]
+              overflow-y-auto
+              overscroll-contain
+              md:max-h-none
+            "
+          >              
+                <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-dancing text-primary">
                   🎁 {t.giftLink}
                 </DialogTitle>
@@ -500,18 +537,19 @@ const WeddingPage = () => {
                   </h4>
 
                   <div className="grid gap-3">
-                                        <a
-                      href="https://www.paypal.com/pool/9lMg76TORQ?sr=accr"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
-                    >
-                      💙 TARJETA DE CREDITO / CREDIT CARD / PAYPAL
-                    </a>
-      
 
-
+                  <a
+                    href="https://www.paypal.com/pool/9lMg76TORQ?sr=accr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handlePayPalClick}
+                    className="block text-center rounded-lg border px-4 py-3 hover:bg-secondary transition-smooth"
+                  >
+                    💙 TARJETA DE CREDITO / CREDIT CARD / PAYPAL
+                  </a>
+                        
                   </div>
+                
                 </div>
 
                 {/* Note */}
